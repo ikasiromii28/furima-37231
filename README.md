@@ -9,15 +9,15 @@
 | encrypted_password | string     | null: false              |
 | last_name          | string     | null: false              |
 | fist_name          | string     | null: false              |
-| last_name(kana)    | string     | null: false              |
-| first_name(kana)   | string     | null: false              |
+| last_name_kana     | string     | null: false              |
+| first_name_kana    | string     | null: false              |
 | birthday           | date       | null:false               |
 
 ### Association
 
 - has_many :items
 - has_many :comments
-- has_many :purchase
+- has_many :purchases
 
 ## items テーブル
 
@@ -52,7 +52,7 @@
 - belongs_to :user
 - belongs_to :item
 
-## purchase テーブル
+## purchases テーブル
 
 | Column  | Type       | Options                        |
 | ------- | ---------- | ------------------------------ |
