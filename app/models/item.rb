@@ -2,10 +2,10 @@ class Item < ApplicationRecord
   belongs_to :user
   has_one_attached :image
 
-  #with_options presence: true do
+  with_options presence: true do
     validates :name
     validates :description
-    validates :category_id
+    validates :category_id,numericality: { other_than: 1 , message: "can't be blank"} 
     validates :status_id
     validates :shipping_id
     validates :prefecture_id
@@ -13,5 +13,9 @@ class Item < ApplicationRecord
     validates :price
     validates :user
     validates :image
-  #end
+  end
+
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to :category
+
 end
