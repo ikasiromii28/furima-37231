@@ -28,7 +28,7 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Category can't be blank")
       end
       it 'category_idが---だと登録できない' do
-        @item.category_id = '---'
+        @item.category_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Category can't be blank")
       end
@@ -38,7 +38,7 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Status can't be blank")
       end
       it 'status_idが---だと登録できない' do
-        @item.status_id = '---'
+        @item.status_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Status can't be blank")
       end
@@ -48,7 +48,7 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Shipping can't be blank")
       end
       it 'shipping_idが---だと登録できない' do
-        @item.shipping_id = '---'
+        @item.shipping_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Shipping can't be blank")
       end
@@ -58,7 +58,7 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Prefecture can't be blank")
       end
       it 'prefecture_idが---だと登録できない' do
-        @item.prefecture_id = '---'
+        @item.prefecture_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Prefecture can't be blank")
       end
@@ -68,7 +68,7 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Schedule can't be blank")
       end
       it 'scheduleが---だと登録できない' do
-        @item.schedule_id = '---'
+        @item.schedule_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Schedule can't be blank")
       end
@@ -86,6 +86,11 @@ RSpec.describe Item, type: :model do
         @item.price = 99_999_999
         @item.valid?
         expect(@item.errors.full_messages).to include('Price must be less than or equal to 9999999')
+      end
+      it 'priceが半角数字以外だと登録できない' do
+        @item.price = 'a'
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Price is not a number')
       end
       it 'imageが空だと登録できない' do
         @item.image = nil
