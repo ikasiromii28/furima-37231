@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   before_action :set_item, except: [:index, :new, :create]
   before_action :authenticate_user!, except: [:index, :show]
+  before_action :contribute_confirmation, only:[:edit, :update]
 
   def index
     @items = Item.order("created_at DESC")
@@ -43,5 +44,11 @@ class ItemsController < ApplicationController
 
   def set_item
     @item = Item.find(params[:id])
+  end
+
+  def contribute_confirmation
+    redirect_to root_path 
+    if @item.user_id != current_user.id || !@item.order.nil?
+    end
   end
 end
