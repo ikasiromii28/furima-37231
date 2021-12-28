@@ -4,7 +4,7 @@ class OrdersController < ApplicationController
 
   def index
     @order_buyer = OrderBuyer.new
-    redirect_to root_path if @item.user_id == current_user.id #|| !@item.order.presence?
+    redirect_to root_path if @item.user_id == current_user.id || !@item.order.nil?
   end
 
   def create
