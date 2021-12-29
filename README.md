@@ -17,7 +17,7 @@
 
 - has_many :items
 - has_many :comments
-- has_many :purchases
+- has_many :orders
 
 ## items テーブル
 
@@ -37,7 +37,7 @@
 
 - belongs_to :user
 - has_many :comments
-- has_one :purchase
+- has_one :order
 
 ## comments テーブル
 
@@ -52,7 +52,7 @@
 - belongs_to :user
 - belongs_to :item
 
-## purchases テーブル
+## orders テーブル
 
 | Column  | Type       | Options                        |
 | ------- | ---------- | ------------------------------ |
@@ -63,9 +63,9 @@
 
 - belongs_to :user
 - belongs_to :item
-- has_one :shipping_address
+- has_one :buyer
 
-## shipping_address テーブル
+## buyers テーブル
 
 | Column        | Type       | Options                        |
 | ------------- | ---------- | ------------------------------ |
@@ -79,4 +79,4 @@
 
 ### Association
 
-- belongs_to :purchase
+- belongs_to :order
