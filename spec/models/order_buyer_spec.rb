@@ -11,7 +11,7 @@ RSpec.describe OrderBuyer, type: :model do
     context '商品を購入できる時' do
       it 'すべての値が正しく入力されていれば購入できる' do
         expect(@order_buyer).to be_valid
-     end
+      end
       it 'buildingは空でも保存できる' do
         @order_buyer.building = ''
         expect(@order_buyer).to be_valid
@@ -27,7 +27,7 @@ RSpec.describe OrderBuyer, type: :model do
       it 'postal_codeが半角のハイフンを含んだ正しい形式でないと保存できないこと' do
         @order_buyer.postal_code = '1234567'
         @order_buyer.valid?
-        expect(@order_buyer.errors.full_messages).to include("Postal code の3桁目と4桁目の間にハイフンを入力してください (例： 123-4567)")
+        expect(@order_buyer.errors.full_messages).to include('Postal code の3桁目と4桁目の間にハイフンを入力してください (例： 123-4567)')
       end
       it 'prefecture_idが空だと保存できないこと' do
         @order_buyer.prefecture_id = ''
@@ -37,7 +37,7 @@ RSpec.describe OrderBuyer, type: :model do
       it 'prefecture_idが「---」を選択していると保存できないこと' do
         @order_buyer.prefecture_id = '1'
         @order_buyer.valid?
-        expect(@order_buyer.errors.full_messages).to include("Prefecture を選択してください")
+        expect(@order_buyer.errors.full_messages).to include('Prefecture を選択してください')
       end
       it 'cityが空だと保存できないこと' do
         @order_buyer.city = ''
@@ -57,7 +57,7 @@ RSpec.describe OrderBuyer, type: :model do
       it 'phone_numberが10桁以上11桁以内の半角数字でないと保存できないこと' do
         @order_buyer.phone_number = '080-1234-5678'
         @order_buyer.valid?
-        expect(@order_buyer.errors.full_messages).to include("Phone number は10桁以上、11桁以下で入力してください")
+        expect(@order_buyer.errors.full_messages).to include('Phone number は10桁以上、11桁以下で入力してください')
       end
       it 'userが紐付いていないと保存できないこと' do
         @order_buyer.user_id = nil
